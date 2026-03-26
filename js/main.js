@@ -122,27 +122,115 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  /* ---- Blog Posts Loading ---- */
+  const blogPostsContainer = document.querySelector('#blog-posts-container');
+  let allBlogPosts = [];
+
+  async function loadBlogPosts() {
+    if (!blogPostsContainer) return;
+
+    try {
+      const apiUrl = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/blog-posts`;
+      const response = await fetch(apiUrl, {
+        headers: {
+          'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`
+        }
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to load blog posts');
+      }
+
+      const data = await response.json();
+      allBlogPosts = data.posts || [];
+
+      renderBlogPosts(allBlogPosts);
+    } catch (error) {
+      console.error('Error loading blog posts:', error);
+      blogPostsContainer.innerHTML = '<p style="text-align:center;padding:3rem;color:var(--muted);">Unable to load posts. Please try again later.</p>';
+    }
+  }
+
+  function renderBlogPosts(posts) {
+    if (!blogPostsContainer) return;
+
+    blogPostsContainer.innerHTML = '';
+
+    if (posts.length === 0) {
+      const noResults = document.querySelector('.blog-no-results');
+      if (noResults) noResults.style.display = 'block';
+      return;
+    }
+
+    const noResults = document.querySelector('.blog-no-results');
+    if (noResults) noResults.style.display = 'none';
+
+    posts.forEach((post, index) => {
+      const card = document.createElement('a');
+      card.href = `#`;
+      card.className = `blog-card reveal delay-${(index % 3) + 1}`;
+      card.dataset.category = post.blog_categories?.slug || 'uncategorized';
+      card.dataset.title = post.title.toLowerCase();
+      card.dataset.excerpt = (post.excerpt || '').toLowerCase();
+
+      card.innerHTML = `
+        <div class="blog-card-img">
+          <img src="${post.featured_image || 'https://images.pexels.com/photos/1181406/pexels-photo-1181406.jpeg'}" alt="${post.title}" loading="lazy" />
+        </div>
+        <div class="blog-card-body">
+          <span class="blog-card-cat">${post.blog_categories?.name || 'Uncategorized'}</span>
+          <h3 class="blog-card-title">${post.title}</h3>
+          <p class="blog-card-excerpt">${post.excerpt || ''}</p>
+          <span class="blog-card-link">Read Post <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+        </div>
+      `;
+
+      blogPostsContainer.appendChild(card);
+    });
+
+    const revealEls = blogPostsContainer.querySelectorAll('.reveal');
+    if (revealEls.length) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      revealEls.forEach(el => io.observe(el));
+    }
+  }
+
+  if (blogPostsContainer) {
+    loadBlogPosts();
+  }
+
   /* ---- Blog Search + Filter ---- */
   const blogSearch = document.querySelector('.blog-search-input');
   const blogFilterBtns = document.querySelectorAll('.blog-filter-row .filter-btn');
-  const blogCards = document.querySelectorAll('.blog-card[data-category]');
   const noResults = document.querySelector('.blog-no-results');
 
   let blogCatFilter = 'all';
   let blogSearchQuery = '';
 
   function applyBlogFilters() {
-    let visible = 0;
-    blogCards.forEach(card => {
-      const catMatch = blogCatFilter === 'all' || card.dataset.category === blogCatFilter;
-      const searchMatch = !blogSearchQuery ||
-        card.dataset.title.toLowerCase().includes(blogSearchQuery) ||
-        card.dataset.excerpt.toLowerCase().includes(blogSearchQuery);
-      const show = catMatch && searchMatch;
-      card.style.display = show ? '' : 'none';
-      if (show) visible++;
-    });
-    if (noResults) noResults.style.display = visible === 0 ? 'block' : 'none';
+    let filteredPosts = allBlogPosts;
+
+    if (blogCatFilter !== 'all') {
+      filteredPosts = filteredPosts.filter(post =>
+        post.blog_categories?.slug === blogCatFilter
+      );
+    }
+
+    if (blogSearchQuery) {
+      filteredPosts = filteredPosts.filter(post =>
+        post.title.toLowerCase().includes(blogSearchQuery) ||
+        (post.excerpt && post.excerpt.toLowerCase().includes(blogSearchQuery))
+      );
+    }
+
+    renderBlogPosts(filteredPosts);
   }
 
   if (blogSearch) {
@@ -203,21 +291,53 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ---- Contact Form Submit ---- */
   const contactForm = document.querySelector('#contact-form');
   if (contactForm) {
-    contactForm.addEventListener('submit', e => {
+    contactForm.addEventListener('submit', async e => {
       e.preventDefault();
       const btn = contactForm.querySelector('[type="submit"]');
       const msg = contactForm.querySelector('.form-message');
       btn.textContent = 'Sending…';
       btn.disabled = true;
-      // Simulate async submit
-      setTimeout(() => {
+
+      try {
+        const formData = {
+          service: contactForm.querySelector('#service').value,
+          budget: contactForm.querySelector('#budget').value,
+          name: contactForm.querySelector('#name').value,
+          company: contactForm.querySelector('#company').value,
+          email: contactForm.querySelector('#email').value,
+          phone: contactForm.querySelector('#phone').value,
+          website: contactForm.querySelector('#website').value,
+          description: contactForm.querySelector('#description').value,
+          notes: contactForm.querySelector('#notes').value,
+          source: 'contact_page'
+        };
+
+        const apiUrl = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/contact-submission`;
+        const response = await fetch(apiUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`
+          },
+          body: JSON.stringify(formData)
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to submit form');
+        }
+
         msg.className = 'form-message success';
         msg.textContent = 'Thank you! Our team will reach out shortly to schedule your consult.';
         contactForm.reset();
         if (formPanels.length) goToStep(0);
+      } catch (error) {
+        console.error('Form submission error:', error);
+        msg.className = 'form-message error';
+        msg.textContent = 'Sorry, something went wrong. Please try again or email us directly at hello@insideleads.com.';
+      } finally {
         btn.textContent = 'BOOK CONSULT';
         btn.disabled = false;
-      }, 1400);
+      }
     });
   }
 

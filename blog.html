@@ -70,7 +70,20 @@
     </div>
 
     <!-- Posts Grid -->
-    <div class="blog-full-grid">
+    <div class="blog-full-grid" id="blog-posts-container">
+      <div class="blog-loading" style="text-align:center;padding:3rem;width:100%;color:var(--muted);">
+        Loading posts...
+      </div>
+    </div>
+
+    <!-- No Results Message -->
+    <div class="blog-no-results" style="display:none;text-align:center;padding:3rem;color:var(--muted);">
+      No posts found. Try adjusting your search or filter.
+    </div>
+
+    <!-- Hidden template for blog cards (removed from view) -->
+    <div style="display:none;">
+      <template id="blog-card-template">
 
       <a href="#"
          class="blog-card reveal delay-1"
