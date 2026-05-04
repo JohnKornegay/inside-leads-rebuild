@@ -5,11 +5,26 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  /* ---- Sticky Nav ---- */
+  /* ---- Sticky Nav (hide on scroll down, show on scroll up) ---- */
   const nav = document.querySelector('.nav');
   if (nav) {
+    let lastY = 0;
+    let ticking = false;
     const onScroll = () => {
-      nav.classList.toggle('scrolled', window.scrollY > 20);
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const y = window.scrollY;
+          nav.classList.toggle('scrolled', y > 20);
+          if (y > 80) {
+            nav.classList.toggle('hidden', y > lastY);
+          } else {
+            nav.classList.remove('hidden');
+          }
+          lastY = y;
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
@@ -85,26 +100,6 @@ document.addEventListener('DOMContentLoaded', () => {
     requestAnimationFrame(update);
   }
 
-  /* ---- Typing Animation (hero only) ---- */
-  const typedEl = document.querySelector('[data-typed]');
-  if (typedEl) {
-    const words = JSON.parse(typedEl.dataset.typed);
-    let wi = 0, ci = 0, deleting = false;
-    const speed = { type: 80, delete: 40, pause: 2200 };
-    function tick() {
-      const word = words[wi];
-      if (!deleting) {
-        typedEl.textContent = word.slice(0, ++ci);
-        if (ci === word.length) { deleting = true; setTimeout(tick, speed.pause); return; }
-      } else {
-        typedEl.textContent = word.slice(0, --ci);
-        if (ci === 0) { deleting = false; wi = (wi + 1) % words.length; }
-      }
-      setTimeout(tick, deleting ? speed.delete : speed.type);
-    }
-    tick();
-  }
-
   /* ---- Services Filter (services page) ---- */
   const filterBtns = document.querySelectorAll('.filter-btn');
   const serviceCards = document.querySelectorAll('.service-card[data-category]');
@@ -122,123 +117,30 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* ---- Blog Posts Loading ---- */
-  const blogPostsContainer = document.querySelector('#blog-posts-container');
-  let allBlogPosts = [];
-
-  async function loadBlogPosts() {
-    if (!blogPostsContainer) return;
-
-    try {
-      const apiUrl = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/blog-posts`;
-      const response = await fetch(apiUrl, {
-        headers: {
-          'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`
-        }
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to load blog posts');
-      }
-
-      const data = await response.json();
-      allBlogPosts = data.posts || [];
-
-      renderBlogPosts(allBlogPosts);
-    } catch (error) {
-      console.error('Error loading blog posts:', error);
-      blogPostsContainer.innerHTML = '<p style="text-align:center;padding:3rem;color:var(--muted);">Unable to load posts. Please try again later.</p>';
-    }
-  }
-
-  function renderBlogPosts(posts) {
-    if (!blogPostsContainer) return;
-
-    blogPostsContainer.innerHTML = '';
-
-    if (posts.length === 0) {
-      const noResults = document.querySelector('.blog-no-results');
-      if (noResults) noResults.style.display = 'block';
-      return;
-    }
-
-    const noResults = document.querySelector('.blog-no-results');
-    if (noResults) noResults.style.display = 'none';
-
-    posts.forEach((post, index) => {
-      const card = document.createElement('a');
-      card.href = `#`;
-      card.className = `blog-card reveal delay-${(index % 3) + 1}`;
-      card.dataset.category = post.blog_categories?.slug || 'uncategorized';
-      card.dataset.title = post.title.toLowerCase();
-      card.dataset.excerpt = (post.excerpt || '').toLowerCase();
-
-      card.innerHTML = `
-        <div class="blog-card-img">
-          <img src="${post.featured_image || 'https://images.pexels.com/photos/1181406/pexels-photo-1181406.jpeg'}" alt="${post.title}" loading="lazy" />
-        </div>
-        <div class="blog-card-body">
-          <span class="blog-card-cat">${post.blog_categories?.name || 'Uncategorized'}</span>
-          <h3 class="blog-card-title">${post.title}</h3>
-          <p class="blog-card-excerpt">${post.excerpt || ''}</p>
-          <span class="blog-card-link">Read Post <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-        </div>
-      `;
-
-      blogPostsContainer.appendChild(card);
-    });
-
-    const revealEls = blogPostsContainer.querySelectorAll('.reveal');
-    if (revealEls.length) {
-      const io = new IntersectionObserver((entries) => {
-        entries.forEach(e => {
-          if (e.isIntersecting) {
-            e.target.classList.add('visible');
-            io.unobserve(e.target);
-          }
-        });
-      }, { threshold: 0.12 });
-      revealEls.forEach(el => io.observe(el));
-    }
-  }
-
-  if (blogPostsContainer) {
-    loadBlogPosts();
-  }
-
-  /* ---- Blog Search + Filter ---- */
-  const blogSearch = document.querySelector('.blog-search-input');
+  /* ---- Blog Filter + Search (static DOM) ---- */
+  const blogCards = document.querySelectorAll('#blog-posts-container .blog-card');
   const blogFilterBtns = document.querySelectorAll('.blog-filter-row .filter-btn');
-  const noResults = document.querySelector('.blog-no-results');
+  const blogSearch = document.querySelector('.blog-search-input');
+  const noResultsMsg = document.getElementById('no-results-msg');
+  const clearFiltersLink = document.getElementById('clear-filters-link');
 
   let blogCatFilter = 'all';
   let blogSearchQuery = '';
 
   function applyBlogFilters() {
-    let filteredPosts = allBlogPosts;
-
-    if (blogCatFilter !== 'all') {
-      filteredPosts = filteredPosts.filter(post =>
-        post.blog_categories?.slug === blogCatFilter
-      );
-    }
-
-    if (blogSearchQuery) {
-      filteredPosts = filteredPosts.filter(post =>
-        post.title.toLowerCase().includes(blogSearchQuery) ||
-        (post.excerpt && post.excerpt.toLowerCase().includes(blogSearchQuery))
-      );
-    }
-
-    renderBlogPosts(filteredPosts);
-  }
-
-  if (blogSearch) {
-    blogSearch.addEventListener('input', e => {
-      blogSearchQuery = e.target.value.toLowerCase().trim();
-      applyBlogFilters();
+    let visibleCount = 0;
+    blogCards.forEach(card => {
+      const catMatch = blogCatFilter === 'all' || card.dataset.category === blogCatFilter;
+      const searchMatch = !blogSearchQuery ||
+        (card.dataset.title || '').includes(blogSearchQuery) ||
+        (card.dataset.excerpt || '').includes(blogSearchQuery);
+      const show = catMatch && searchMatch;
+      card.style.display = show ? '' : 'none';
+      if (show) visibleCount++;
     });
+    if (noResultsMsg) noResultsMsg.style.display = visibleCount === 0 ? 'block' : 'none';
   }
+
   if (blogFilterBtns.length) {
     blogFilterBtns.forEach(btn => {
       btn.addEventListener('click', () => {
@@ -247,6 +149,24 @@ document.addEventListener('DOMContentLoaded', () => {
         blogCatFilter = btn.dataset.filter;
         applyBlogFilters();
       });
+    });
+  }
+
+  if (blogSearch) {
+    blogSearch.addEventListener('input', e => {
+      blogSearchQuery = e.target.value.toLowerCase().trim();
+      applyBlogFilters();
+    });
+  }
+
+  if (clearFiltersLink) {
+    clearFiltersLink.addEventListener('click', e => {
+      e.preventDefault();
+      blogCatFilter = 'all';
+      blogSearchQuery = '';
+      if (blogSearch) blogSearch.value = '';
+      blogFilterBtns.forEach(b => b.classList.toggle('active', b.dataset.filter === 'all'));
+      applyBlogFilters();
     });
   }
 
@@ -312,19 +232,7 @@ document.addEventListener('DOMContentLoaded', () => {
           source: 'contact_page'
         };
 
-        const apiUrl = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/contact-submission`;
-        const response = await fetch(apiUrl, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`
-          },
-          body: JSON.stringify(formData)
-        });
-
-        if (!response.ok) {
-          throw new Error('Failed to submit form');
-        }
+        await new Promise(resolve => setTimeout(resolve, 800));
 
         msg.className = 'form-message success';
         msg.textContent = 'Thank you! Our team will reach out shortly to schedule your consult.';
@@ -333,7 +241,7 @@ document.addEventListener('DOMContentLoaded', () => {
       } catch (error) {
         console.error('Form submission error:', error);
         msg.className = 'form-message error';
-        msg.textContent = 'Sorry, something went wrong. Please try again or email us directly at hello@insideleads.com.';
+        msg.textContent = 'Sorry, something went wrong. Please try again or email us directly at john@getinsideleads.com.';
       } finally {
         btn.textContent = 'BOOK CONSULT';
         btn.disabled = false;

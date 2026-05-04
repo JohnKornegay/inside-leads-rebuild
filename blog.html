@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Blog | Digital Marketing Insights | Inside Leads | Raleigh, NC</title>
-  <meta name="description" content="Get the latest digital marketing insights and tips from Inside Leads. Boost your business with our valuable insights on SEO, PPC, Social Media, and AI." />
+  <title>Insights | Digital Marketing & AI Strategy | Inside Leads | Raleigh, NC</title>
+  <meta name="description" content="Expert takes on SEO, PPC, social media, and AI consulting from the Inside Leads team. Insights for Raleigh and Detroit small businesses." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -18,7 +18,7 @@
     <a href="index.html" class="nav-logo"><span>INSIDE</span><span class="thin">&nbsp;LEADS</span></a>
     <ul class="nav-links">
       <li><a href="services.html">Services</a></li>
-      <li><a href="blog.html">Blog</a></li>
+      <li><a href="blog.html" class="active">Insights</a></li>
       <li><a href="team.html">Team</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
@@ -28,7 +28,7 @@
 </nav>
 <div class="nav-mobile">
   <a href="services.html">Services</a>
-  <a href="blog.html">Blog</a>
+  <a href="blog.html">Insights</a>
   <a href="team.html">Team</a>
   <a href="contact.html">Contact</a>
   <a href="contact.html" class="btn btn-primary">Book a Consult</a>
@@ -40,14 +40,50 @@
     <span class="section-label">Insights &amp; Resources</span>
     <h1 class="section-title">DIGITAL MARKETING<br><em>INSIGHTS</em></h1>
     <p class="section-sub">
-      Stay ahead of the curve with expert takes on SEO, PPC, social media, web development, and AI — straight from the Inside Leads team.
+      Expert takes on SEO, PPC, AI, and local marketing — straight from the Inside Leads team.
     </p>
   </div>
 </div>
 
-<!-- BLOG SECTION -->
+<!-- INSIGHTS SECTION -->
 <section style="padding:5rem 0 8rem;">
   <div class="container">
+
+    <!-- FEATURED POST -->
+    <a href="contact.html" class="blog-featured reveal">
+      <div class="blog-featured-img">
+        <img
+          src="https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1200"
+          alt="AI transforming SEO in 2025"
+          loading="eager"
+        />
+      </div>
+      <div class="blog-featured-body">
+        <div class="blog-featured-eyebrow">
+          <span class="blog-featured-cat">AI &amp; SEO</span>
+          <span class="blog-featured-read">&#x2022;&nbsp;5 min read</span>
+        </div>
+        <h2 class="blog-featured-title">How AI Is Transforming SEO in 2025 — And What Raleigh Businesses Need to Do Right Now</h2>
+        <p class="blog-featured-excerpt">
+          From Google's AI Overviews to RankBrain and Gemini, artificial intelligence is reshaping how search works. Here's how forward-thinking businesses need to adapt their SEO strategy.
+        </p>
+        <span class="blog-featured-cta">
+          Read Article
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
+      </div>
+    </a>
+
+    <!-- Category Filter -->
+    <div class="blog-filter-row reveal">
+      <button class="filter-btn active" data-filter="all">All Topics</button>
+      <button class="filter-btn" data-filter="seo">SEO</button>
+      <button class="filter-btn" data-filter="ppc">PPC</button>
+      <button class="filter-btn" data-filter="social">Social Media</button>
+      <button class="filter-btn" data-filter="branding">Brand Strategy</button>
+      <button class="filter-btn" data-filter="local">Local Marketing</button>
+      <button class="filter-btn" data-filter="ai">AI Consulting</button>
+    </div>
 
     <!-- Search -->
     <div class="blog-search-bar reveal">
@@ -59,44 +95,24 @@
       />
     </div>
 
-    <!-- Category Filter -->
-    <div class="blog-filter-row reveal">
-      <button class="filter-btn active" data-filter="all">All Topics</button>
-      <button class="filter-btn" data-filter="seo">SEO</button>
-      <button class="filter-btn" data-filter="ppc">PPC</button>
-      <button class="filter-btn" data-filter="social">Social Media</button>
-      <button class="filter-btn" data-filter="branding">Brand Strategy</button>
-      <button class="filter-btn" data-filter="local">Local Marketing</button>
-    </div>
-
     <!-- Posts Grid -->
     <div class="blog-full-grid" id="blog-posts-container">
-      <div class="blog-loading" style="text-align:center;padding:3rem;width:100%;color:var(--muted);">
-        Loading posts...
-      </div>
-    </div>
-
-    <!-- No Results Message -->
-    <div class="blog-no-results" style="display:none;text-align:center;padding:3rem;color:var(--muted);">
-      No posts found. Try adjusting your search or filter.
-    </div>
-
-    <!-- Hidden template for blog cards (removed from view) -->
-    <div style="display:none;">
-      <template id="blog-card-template">
 
       <a href="#"
          class="blog-card reveal delay-1"
          data-category="branding"
-         data-title="10 ways to increase brand awareness in 2024"
+         data-title="10 ways to increase brand awareness in 2025"
          data-excerpt="as a business owner you are always looking for ways to increase brand awareness with the right strategies you can boost awareness and drive growth">
         <div class="blog-card-img">
-          <img src="https://uploads-ssl.webflow.com/5f7e542e02989ea7d01f5620/63a99b9ef1c7f64df9eb6a9a_pexels-caio-67112.jpg" alt="Brand Awareness" loading="lazy" />
+          <img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Brand Awareness" loading="lazy" />
         </div>
         <div class="blog-card-body">
-          <span class="blog-card-cat">Brand Strategy</span>
-          <h3 class="blog-card-title">10 Ways to Increase Brand Awareness in 2024</h3>
-          <p class="blog-card-excerpt">As a business owner, you're always looking for ways to increase brand awareness. With the right strategies in place, you can effectively boost your brand awareness and drive business growth.</p>
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <span class="blog-card-cat">Brand Strategy</span>
+            <span class="blog-card-read">4 min read</span>
+          </div>
+          <h3 class="blog-card-title">10 Ways to Increase Brand Awareness in 2025</h3>
+          <p class="blog-card-excerpt">As a business owner, you're always looking for ways to increase brand awareness. With the right strategies in place, you can effectively boost awareness and drive business growth.</p>
           <span class="blog-card-link">Read Post <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
         </div>
       </a>
@@ -107,12 +123,15 @@
          data-title="understanding google ads bidding strategies"
          data-excerpt="choosing the right bidding method can make a significant difference in the performance of your ppc campaigns">
         <div class="blog-card-img">
-          <img src="https://uploads-ssl.webflow.com/5f7e542e02989ea7d01f5620/63a9a59860216ab712a22b6d_pexels-pixabay-265087.jpg" alt="Google Ads" loading="lazy" />
+          <img src="https://images.pexels.com/photos/265087/pexels-photo-265087.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Google Ads" loading="lazy" />
         </div>
         <div class="blog-card-body">
-          <span class="blog-card-cat">PPC</span>
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <span class="blog-card-cat">PPC</span>
+            <span class="blog-card-read">6 min read</span>
+          </div>
           <h3 class="blog-card-title">Understanding Google Ads Bidding Strategies</h3>
-          <p class="blog-card-excerpt">Google Ads offers several options for bidding on PPC campaigns. Choosing the right bidding method can make a significant difference in performance and return on your marketing budget.</p>
+          <p class="blog-card-excerpt">Choosing the right bidding method can make a significant difference in the performance of your PPC campaigns and the return on your digital marketing budget.</p>
           <span class="blog-card-link">Read Post <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
         </div>
       </a>
@@ -123,12 +142,15 @@
          data-title="hyperlocal marketing 101 what is it"
          data-excerpt="thinking small can actually be a better strategy enter hyperlocal marketing targeting prospects in a restricted zone around your business">
         <div class="blog-card-img">
-          <img src="https://uploads-ssl.webflow.com/5f7e542e02989ea7d01f5620/63a9a954d2940d47d78ff849_pexels-serpstat-572056.jpg" alt="Hyperlocal Marketing" loading="lazy" />
+          <img src="https://images.pexels.com/photos/572056/pexels-photo-572056.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Hyperlocal Marketing" loading="lazy" />
         </div>
         <div class="blog-card-body">
-          <span class="blog-card-cat">Local Marketing</span>
-          <h3 class="blog-card-title">Hyperlocal Marketing 101: What is it?</h3>
-          <p class="blog-card-excerpt">When it comes to marketing a local business, thinking small can be a better strategy. Hyperlocal marketing targets prospects in a highly restricted zone around your business.</p>
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <span class="blog-card-cat">Local Marketing</span>
+            <span class="blog-card-read">5 min read</span>
+          </div>
+          <h3 class="blog-card-title">Hyperlocal Marketing 101: What Is It?</h3>
+          <p class="blog-card-excerpt">When it comes to marketing a local business, thinking small can actually be a better strategy. Hyperlocal marketing targets prospects in a highly restricted zone around your business.</p>
           <span class="blog-card-link">Read Post <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
         </div>
       </a>
@@ -139,12 +161,15 @@
          data-title="how to get recommended on instagram"
          data-excerpt="instagram recommendations can be a valuable tool for businesses and influencers looking to increase reach and engagement on the platform">
         <div class="blog-card-img">
-          <img src="https://uploads-ssl.webflow.com/5f7e542e02989ea7d01f5620/63a9b2509e321823398f4eb5_pexels-prateek-katyal-2694434.jpg" alt="Instagram" loading="lazy" />
+          <img src="https://images.pexels.com/photos/2694434/pexels-photo-2694434.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Instagram Marketing" loading="lazy" />
         </div>
         <div class="blog-card-body">
-          <span class="blog-card-cat">Social Media</span>
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <span class="blog-card-cat">Social Media</span>
+            <span class="blog-card-read">4 min read</span>
+          </div>
           <h3 class="blog-card-title">How To Get Recommended On Instagram</h3>
-          <p class="blog-card-excerpt">Instagram Recommendations appear on the Explore page and Reels tab based on user preferences. Leveraging this feature can significantly increase your content's reach to targeted audiences.</p>
+          <p class="blog-card-excerpt">Instagram Recommendations appear on the Explore page and Reels tab based on user preferences. Leveraging this feature can significantly increase your content's reach.</p>
           <span class="blog-card-link">Read Post <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
         </div>
       </a>
@@ -155,39 +180,102 @@
          data-title="14 myths about the design process"
          data-excerpt="there are many myths surrounding the web design process it is important to separate fact from fiction to make informed decisions">
         <div class="blog-card-img">
-          <img src="https://uploads-ssl.webflow.com/5f7e542e02989ea7d01f5620/63a9a0f9a56bae0dcb8ddf7b_pexels-tranmautritam-326518.jpg" alt="Design Process" loading="lazy" />
+          <img src="https://images.pexels.com/photos/326518/pexels-photo-326518.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Design Process" loading="lazy" />
         </div>
         <div class="blog-card-body">
-          <span class="blog-card-cat">Brand Strategy</span>
-          <h3 class="blog-card-title">14 Myths About the Design Process</h3>
-          <p class="blog-card-excerpt">Even the most experienced designers encounter myths and misconceptions about web design. Let's clear the air and share the truth about some of the most common myths in the field.</p>
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <span class="blog-card-cat">Brand Strategy</span>
+            <span class="blog-card-read">7 min read</span>
+          </div>
+          <h3 class="blog-card-title">14 Myths About the Design Process, Debunked</h3>
+          <p class="blog-card-excerpt">Even experienced designers encounter myths and misconceptions about web design. Let's clear the air and share the truth about some of the most common design myths.</p>
           <span class="blog-card-link">Read Post <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
         </div>
       </a>
 
-      <!-- AI-themed bonus article -->
-      <a href="contact.html"
+      <a href="#"
          class="blog-card reveal delay-3"
          data-category="seo"
-         data-title="how ai is transforming seo in 2025"
-         data-excerpt="artificial intelligence is reshaping search engine optimization from ai overviews to rankbrain how businesses need to adapt their seo strategy">
-        <div class="blog-card-img" style="background:linear-gradient(135deg,#0f1208,#161a0d);display:flex;align-items:center;justify-content:center;aspect-ratio:16/9;">
-          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="rgba(232,255,71,.5)" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><circle cx="12" cy="10" r="3"/><path d="M9 21l1.5-3h3L15 21"/></svg>
+         data-title="local seo guide for raleigh businesses"
+         data-excerpt="raleigh is a competitive local market dominating google maps and local search requires the right strategy for raleigh and triangle area businesses">
+        <div class="blog-card-img">
+          <img src="https://images.pexels.com/photos/1181406/pexels-photo-1181406.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Local SEO Raleigh" loading="lazy" />
         </div>
         <div class="blog-card-body">
-          <span class="blog-card-cat" style="color:var(--accent);">AI &amp; SEO ✦ NEW</span>
-          <h3 class="blog-card-title">How AI Is Transforming SEO in 2025</h3>
-          <p class="blog-card-excerpt">From Google's AI Overviews to RankBrain and Gemini, artificial intelligence is reshaping how search works. Here's how forward-thinking businesses need to adapt their SEO strategy right now.</p>
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <span class="blog-card-cat">SEO</span>
+            <span class="blog-card-read">8 min read</span>
+          </div>
+          <h3 class="blog-card-title">The Local SEO Guide for Raleigh Businesses in 2025</h3>
+          <p class="blog-card-excerpt">Raleigh is a fast-growing, competitive market. Here's how to dominate Google Maps, local pack rankings, and organic search for Triangle-area customers looking for your services.</p>
+          <span class="blog-card-link">Read Post <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+        </div>
+      </a>
+
+      <a href="#"
+         class="blog-card reveal delay-1"
+         data-category="ai"
+         data-title="how to use ai to automate your marketing workflows"
+         data-excerpt="small businesses can use ai tools to automate email marketing social scheduling content creation and lead follow up saving hours each week">
+        <div class="blog-card-img" style="background:linear-gradient(135deg,#0f1208,#161a0d);display:flex;align-items:center;justify-content:center;aspect-ratio:16/9;">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="rgba(232,255,71,.4)" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><circle cx="12" cy="10" r="3"/><path d="M9 21l1.5-3h3L15 21"/></svg>
+        </div>
+        <div class="blog-card-body">
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <span class="blog-card-cat" style="color:var(--accent);">AI Consulting</span>
+            <span class="blog-card-read">6 min read</span>
+          </div>
+          <h3 class="blog-card-title">How to Use AI to Automate Your Marketing Workflows</h3>
+          <p class="blog-card-excerpt">Small businesses can use AI tools to automate email marketing, social scheduling, content creation, and lead follow-up — saving hours every week and closing more deals.</p>
           <span class="blog-card-link" style="color:var(--accent);">Read Post <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
         </div>
       </a>
 
-      <!-- No results -->
-      <div class="blog-no-results">
-        <p>No articles found matching your search. <a href="#" style="color:var(--accent);text-decoration:underline;" onclick="document.querySelector('.blog-search-input').value='';document.querySelector('.blog-search-input').dispatchEvent(new Event('input'));return false;">Clear search</a></p>
-      </div>
+      <a href="#"
+         class="blog-card reveal delay-2"
+         data-category="local"
+         data-title="gbp google business profile optimization checklist"
+         data-excerpt="your google business profile is one of the most powerful free marketing tools available to local businesses here is how to optimize it fully">
+        <div class="blog-card-img">
+          <img src="https://images.pexels.com/photos/4968391/pexels-photo-4968391.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Google Business Profile" loading="lazy" />
+        </div>
+        <div class="blog-card-body">
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <span class="blog-card-cat">Local Marketing</span>
+            <span class="blog-card-read">5 min read</span>
+          </div>
+          <h3 class="blog-card-title">The Google Business Profile Optimization Checklist for 2025</h3>
+          <p class="blog-card-excerpt">Your Google Business Profile is one of the most powerful free marketing tools available. Here's the complete optimization checklist to dominate local search results.</p>
+          <span class="blog-card-link">Read Post <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+        </div>
+      </a>
+
+      <a href="#"
+         class="blog-card reveal delay-3"
+         data-category="ppc"
+         data-title="why your google ads are not converting"
+         data-excerpt="running google ads but not seeing leads or sales here are the most common reasons your campaigns are not converting and how to fix them">
+        <div class="blog-card-img">
+          <img src="https://images.pexels.com/photos/67112/pexels-photo-67112.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Google Ads Conversions" loading="lazy" />
+        </div>
+        <div class="blog-card-body">
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <span class="blog-card-cat">PPC</span>
+            <span class="blog-card-read">7 min read</span>
+          </div>
+          <h3 class="blog-card-title">Why Your Google Ads Are Not Converting (And How to Fix It)</h3>
+          <p class="blog-card-excerpt">Running Google Ads but not seeing leads or sales? These are the most common reasons campaigns fail to convert — and the exact fixes to turn them around.</p>
+          <span class="blog-card-link">Read Post <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+        </div>
+      </a>
 
     </div><!-- /blog-full-grid -->
+
+    <!-- No Results Message -->
+    <div class="blog-no-results" id="no-results-msg" style="display:none;text-align:center;padding:3rem;color:var(--muted);">
+      No articles found. <a href="#" id="clear-filters-link" style="color:var(--accent);text-decoration:underline;">Clear filters</a>
+    </div>
+
   </div>
 </section>
 
@@ -227,21 +315,21 @@
         <h4>Company</h4>
         <ul>
           <li><a href="team.html">Our Team</a></li>
-          <li><a href="blog.html">Blog</a></li>
+          <li><a href="blog.html">Insights</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h4>Contact</h4>
         <ul>
-          <li><a href="mailto:hello@insideleads.com">hello@insideleads.com</a></li>
+          <li><a href="mailto:john@getinsideleads.com">john@getinsideleads.com</a></li>
           <li><a href="tel:+19195550100">(919) 555-0100</a></li>
-          <li><a href="#">Raleigh, NC</a></li>
+          <li>Raleigh, NC</li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <span class="footer-copy">&copy; 2025 Inside Leads. All rights reserved.</span>
+      <span class="footer-copy">&copy; 2026 Inside Leads. All rights reserved.</span>
       <div class="footer-social">
         <a href="#" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
         <a href="#" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
