@@ -249,6 +249,43 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  /* ---- Reading Progress Bar ---- */
+  const progressBar = document.getElementById('reading-progress');
+  if (progressBar) {
+    const updateProgress = () => {
+      const body = document.getElementById('article-body');
+      if (!body) return;
+      const scrollTop = window.scrollY;
+      const total = body.offsetTop + body.offsetHeight - window.innerHeight;
+      progressBar.style.width = `${Math.min(100, Math.max(0, scrollTop / total * 100))}%`;
+    };
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+  }
+
+  /* ---- Blur-up Image Loading ---- */
+  document.querySelectorAll('img[data-src]').forEach(img => {
+    const real = new Image();
+    real.onload = () => { img.src = real.src; img.classList.add('loaded'); };
+    real.src = img.dataset.src;
+  });
+
+  /* ---- TOC Active Section ---- */
+  const tocLinks = document.querySelectorAll('.toc-link');
+  if (tocLinks.length) {
+    const headings = Array.from(document.querySelectorAll('.article-body h2[id]'));
+    const tocIO = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          tocLinks.forEach(l => l.classList.remove('active'));
+          const link = document.querySelector(`.toc-link[href="#${e.target.id}"]`);
+          if (link) link.classList.add('active');
+        }
+      });
+    }, { rootMargin:'-15% 0% -65% 0%' });
+    headings.forEach(h => tocIO.observe(h));
+  }
+
   /* ---- Smooth anchor scroll ---- */
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {

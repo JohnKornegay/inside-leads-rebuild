@@ -159,28 +159,28 @@
             <!-- Step 2: Contact Details -->
             <div class="form-panel">
               <div class="form-row">
-                <div class="form-group">
+                <div class="float-field">
+                  <input class="form-input" type="text" id="name" name="name" placeholder=" " required />
                   <label class="form-label" for="name">Name *</label>
-                  <input class="form-input" type="text" id="name" name="name" placeholder="Your full name" required />
                 </div>
-                <div class="form-group">
+                <div class="float-field">
+                  <input class="form-input" type="text" id="company" name="company" placeholder=" " />
                   <label class="form-label" for="company">Company</label>
-                  <input class="form-input" type="text" id="company" name="company" placeholder="Company name" />
                 </div>
               </div>
               <div class="form-row">
-                <div class="form-group">
+                <div class="float-field">
+                  <input class="form-input" type="email" id="email" name="email" placeholder=" " required />
                   <label class="form-label" for="email">Email *</label>
-                  <input class="form-input" type="email" id="email" name="email" placeholder="you@company.com" required />
                 </div>
-                <div class="form-group">
+                <div class="float-field">
+                  <input class="form-input" type="tel" id="phone" name="phone" placeholder=" " />
                   <label class="form-label" for="phone">Phone</label>
-                  <input class="form-input" type="tel" id="phone" name="phone" placeholder="(919) 000-0000" />
                 </div>
               </div>
-              <div class="form-group">
+              <div class="float-field">
+                <input class="form-input" type="url" id="website" name="website" placeholder=" " />
                 <label class="form-label" for="website">Current Website URL</label>
-                <input class="form-input" type="url" id="website" name="website" placeholder="https://yourwebsite.com" />
               </div>
               <div class="form-nav">
                 <button type="button" class="btn btn-ghost btn-step" data-prev-step>Back</button>
@@ -193,13 +193,13 @@
 
             <!-- Step 3: Project Description -->
             <div class="form-panel">
-              <div class="form-group">
+              <div class="float-field">
+                <textarea class="form-textarea" id="description" name="description" placeholder=" " required style="min-height:140px;"></textarea>
                 <label class="form-label" for="description">Project Description *</label>
-                <textarea class="form-textarea" id="description" name="description" placeholder="Tell us about your project goals, current challenges, and what you're hoping to achieve…" required style="min-height:140px;"></textarea>
               </div>
-              <div class="form-group">
+              <div class="float-field">
+                <textarea class="form-textarea" id="notes" name="notes" placeholder=" "></textarea>
                 <label class="form-label" for="notes">Additional Notes</label>
-                <textarea class="form-textarea" id="notes" name="notes" placeholder="Any other details, questions, or specific requirements…"></textarea>
               </div>
               <div class="form-nav" style="display:block;">
                 <div style="display:flex;gap:1rem;margin-bottom:1rem;">
