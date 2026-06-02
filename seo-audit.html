@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Free SEO Audit Tool | Inside Leads</title>
+  <meta name="description" content="Run a free SEO audit on any website in seconds. Get a clear report of technical issues, on-page problems, and actionable fixes to improve your search rankings." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<!-- ============ NAVIGATION ============ -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <span>INSIDE</span><span class="thin">&nbsp;LEADS</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="services.html">Services</a></li>
+      <li><a href="seo-audit.html">Free SEO Audit</a></li>
+      <li><a href="blog.html">Insights</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="nav-cta">Book a Consult</a>
+    <button class="nav-toggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile nav -->
+<div class="nav-mobile">
+  <a href="services.html">Services</a>
+  <a href="seo-audit.html">Free SEO Audit</a>
+  <a href="blog.html">Insights</a>
+  <a href="team.html">Team</a>
+  <a href="contact.html">Contact</a>
+  <a href="contact.html" class="btn btn-primary">Book a Consult</a>
+</div>
+
+<!-- ============ TOOL HERO ============ -->
+<section class="audit-hero">
+  <div class="audit-hero-bg"></div>
+  <div class="container">
+    <div class="audit-hero-content">
+      <span class="section-label">Free Tool</span>
+      <h1 class="audit-hero-heading">
+        FREE WEBSITE<br>
+        <em class="accent">SEO AUDIT</em>
+      </h1>
+      <p class="audit-hero-sub">
+        Get an instant SEO health report for any website. We check on-page content, technical setup, performance, and mobile readiness — then show you exactly what to fix.
+      </p>
+
+      <!-- URL Input Form -->
+      <div class="audit-input-card" id="audit-input-card">
+        <form class="audit-form" id="audit-form" autocomplete="off">
+          <div class="audit-input-row">
+            <div class="audit-input-wrap">
+              <svg class="audit-input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              <input
+                type="text"
+                id="audit-url"
+                class="audit-url-input"
+                placeholder="Enter website URL  (e.g. yoursite.com)"
+                autocomplete="off"
+                spellcheck="false"
+              />
+            </div>
+            <button type="submit" class="btn btn-primary audit-submit-btn" id="audit-submit-btn">
+              Analyze Website
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </button>
+          </div>
+          <p class="audit-form-note">Free to use &middot; No sign-up required &middot; Results in seconds</p>
+        </form>
+      </div>
+
+      <!-- Error message -->
+      <div class="audit-error" id="audit-error" style="display:none;"></div>
+    </div>
+
+    <!-- Trust indicators -->
+    <div class="audit-trust reveal">
+      <div class="audit-trust-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        <span>On-Page SEO Analysis</span>
+      </div>
+      <div class="audit-trust-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        <span>Technical SEO Checks</span>
+      </div>
+      <div class="audit-trust-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        <span>Performance &amp; Speed</span>
+      </div>
+      <div class="audit-trust-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        <span>Mobile Readiness</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LOADING STATE ============ -->
+<section class="audit-loading" id="audit-loading" style="display:none;">
+  <div class="container">
+    <div class="audit-loading-inner">
+      <div class="audit-spinner">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+          <circle cx="24" cy="24" r="20" stroke="rgba(255,255,255,.08)" stroke-width="4"/>
+          <circle cx="24" cy="24" r="20" stroke="var(--accent)" stroke-width="4" stroke-linecap="round" stroke-dasharray="100 156" class="audit-spinner-arc"/>
+        </svg>
+      </div>
+      <h2 class="audit-loading-title">Analyzing <span id="audit-loading-url" class="accent"></span></h2>
+      <p class="audit-loading-sub">Checking on-page SEO, technical setup, and performance…</p>
+      <div class="audit-loading-steps">
+        <div class="audit-loading-step active" id="lstep-1">
+          <div class="audit-lstep-dot"></div>
+          <span>Fetching page content</span>
+        </div>
+        <div class="audit-loading-step" id="lstep-2">
+          <div class="audit-lstep-dot"></div>
+          <span>Analyzing meta tags &amp; headings</span>
+        </div>
+        <div class="audit-loading-step" id="lstep-3">
+          <div class="audit-lstep-dot"></div>
+          <span>Checking technical SEO signals</span>
+        </div>
+        <div class="audit-loading-step" id="lstep-4">
+          <div class="audit-lstep-dot"></div>
+          <span>Measuring performance &amp; mobile</span>
+        </div>
+        <div class="audit-loading-step" id="lstep-5">
+          <div class="audit-lstep-dot"></div>
+          <span>Generating your report</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RESULTS ============ -->
+<section class="audit-results" id="audit-results" style="display:none;">
+  <div class="container">
+
+    <!-- Score header -->
+    <div class="audit-results-header">
+      <div class="audit-score-block reveal">
+        <div class="audit-score-ring-wrap">
+          <svg class="audit-score-ring" viewBox="0 0 120 120" width="120" height="120">
+            <circle cx="60" cy="60" r="50" stroke="rgba(255,255,255,.06)" stroke-width="10" fill="none"/>
+            <circle cx="60" cy="60" r="50" stroke="var(--accent)" stroke-width="10" fill="none"
+              stroke-linecap="round"
+              stroke-dasharray="314"
+              stroke-dashoffset="314"
+              class="audit-score-arc"
+              id="audit-score-arc"
+              transform="rotate(-90 60 60)"/>
+          </svg>
+          <div class="audit-score-center">
+            <span class="audit-score-number" id="audit-score-number">0</span>
+            <span class="audit-score-label">/ 100</span>
+          </div>
+        </div>
+        <div class="audit-score-meta">
+          <h2 class="audit-score-heading">SEO Health Score</h2>
+          <p class="audit-score-domain" id="audit-score-domain"></p>
+          <div class="audit-score-grade" id="audit-score-grade"></div>
+        </div>
+      </div>
+
+      <!-- Category scores -->
+      <div class="audit-categories reveal delay-1">
+        <div class="audit-cat-item">
+          <div class="audit-cat-label">On-Page SEO</div>
+          <div class="audit-cat-bar-wrap">
+            <div class="audit-cat-bar" id="cat-bar-on_page"></div>
+          </div>
+          <div class="audit-cat-score" id="cat-score-on_page">—</div>
+        </div>
+        <div class="audit-cat-item">
+          <div class="audit-cat-label">Technical SEO</div>
+          <div class="audit-cat-bar-wrap">
+            <div class="audit-cat-bar" id="cat-bar-technical"></div>
+          </div>
+          <div class="audit-cat-score" id="cat-score-technical">—</div>
+        </div>
+        <div class="audit-cat-item">
+          <div class="audit-cat-label">Performance</div>
+          <div class="audit-cat-bar-wrap">
+            <div class="audit-cat-bar" id="cat-bar-performance"></div>
+          </div>
+          <div class="audit-cat-score" id="cat-score-performance">—</div>
+        </div>
+        <div class="audit-cat-item">
+          <div class="audit-cat-label">Mobile</div>
+          <div class="audit-cat-bar-wrap">
+            <div class="audit-cat-bar" id="cat-bar-mobile"></div>
+          </div>
+          <div class="audit-cat-score" id="cat-score-mobile">—</div>
+        </div>
+      </div>
+
+      <!-- Summary counts -->
+      <div class="audit-summary reveal delay-2">
+        <div class="audit-summary-item pass">
+          <span class="audit-summary-num" id="summary-passed">0</span>
+          <span class="audit-summary-lbl">Passed</span>
+        </div>
+        <div class="audit-summary-item warn">
+          <span class="audit-summary-num" id="summary-warnings">0</span>
+          <span class="audit-summary-lbl">Warnings</span>
+        </div>
+        <div class="audit-summary-item fail">
+          <span class="audit-summary-num" id="summary-failed">0</span>
+          <span class="audit-summary-lbl">Failed</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Checks list -->
+    <div class="audit-checks-section reveal">
+      <div class="audit-checks-header">
+        <h3 class="audit-checks-title">Detailed Report</h3>
+        <div class="audit-checks-filters">
+          <button class="audit-filter-btn active" data-filter="all">All</button>
+          <button class="audit-filter-btn" data-filter="fail">Failed</button>
+          <button class="audit-filter-btn" data-filter="warn">Warnings</button>
+          <button class="audit-filter-btn" data-filter="pass">Passed</button>
+        </div>
+      </div>
+      <div class="audit-checks-list" id="audit-checks-list"></div>
+    </div>
+
+    <!-- CTA -->
+    <div class="audit-cta-panel reveal">
+      <div class="audit-cta-inner">
+        <div class="audit-cta-text">
+          <span class="section-label">Ready to Fix These Issues?</span>
+          <h3 class="audit-cta-heading">Let our team handle the heavy lifting.</h3>
+          <p class="audit-cta-sub">Our SEO specialists will resolve these issues and build a long-term strategy to grow your organic traffic and leads.</p>
+        </div>
+        <div class="audit-cta-actions">
+          <a href="#" class="btn btn-primary" id="audit-cta-contact">
+            Get a Free Consultation
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <button class="btn btn-ghost" id="audit-run-another">Audit Another Site</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section class="audit-how" id="audit-how">
+  <div class="container">
+    <div class="section-header center reveal">
+      <span class="section-label">How It Works</span>
+      <h2 class="section-title">THREE STEPS TO A <em>HEALTHIER SITE</em></h2>
+    </div>
+    <div class="audit-steps">
+      <div class="audit-step reveal delay-1">
+        <div class="audit-step-num">01</div>
+        <div class="audit-step-bar"></div>
+        <h3>Enter Your URL</h3>
+        <p>Type in your website address above. We accept any public domain or URL — no account or sign-up needed.</p>
+      </div>
+      <div class="audit-step reveal delay-2">
+        <div class="audit-step-num">02</div>
+        <div class="audit-step-bar"></div>
+        <h3>We Run the Checks</h3>
+        <p>Our tool analyzes your page's title tags, headings, meta data, HTTPS status, response time, structured data, and more in seconds.</p>
+      </div>
+      <div class="audit-step reveal delay-3">
+        <div class="audit-step-num">03</div>
+        <div class="audit-step-bar"></div>
+        <h3>Fix What Matters</h3>
+        <p>You get a prioritized report with plain-language explanations and specific recommendations so you know exactly what to tackle first.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHAT WE CHECK ============ -->
+<section style="padding:6rem 0;background:var(--bg-alt);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div class="container">
+    <div class="section-header center reveal">
+      <span class="section-label">Coverage</span>
+      <h2 class="section-title">WHAT WE <em>CHECK</em></h2>
+    </div>
+    <div class="audit-coverage-grid">
+      <div class="audit-coverage-item reveal delay-1">
+        <div class="audit-coverage-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        </div>
+        <h4>On-Page SEO</h4>
+        <p>Title tags, meta descriptions, H1–H3 headings, image alt text, Open Graph tags.</p>
+      </div>
+      <div class="audit-coverage-item reveal delay-2">
+        <div class="audit-coverage-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <h4>Technical SEO</h4>
+        <p>HTTPS, canonical tags, robots meta, structured data, robots.txt, XML sitemap.</p>
+      </div>
+      <div class="audit-coverage-item reveal delay-3">
+        <div class="audit-coverage-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h4>Performance</h4>
+        <p>Server response time, HTML page size — key indicators of site speed and health.</p>
+      </div>
+      <div class="audit-coverage-item reveal delay-1">
+        <div class="audit-coverage-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+        </div>
+        <h4>Mobile Readiness</h4>
+        <p>Viewport meta tag and mobile configuration to ensure your site renders correctly on all devices.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BOTTOM CTA ============ -->
+<section class="cta-section reveal">
+  <div class="container">
+    <span class="section-label" style="justify-content:center;display:flex;">Need More Than an Audit?</span>
+    <h2 class="section-title" style="text-align:center;margin-bottom:1.5rem;">
+      WE FIX WHAT THE<br><em>AUDIT FINDS.</em>
+    </h2>
+    <p style="text-align:center;color:var(--muted);max-width:500px;margin:0 auto 3rem;font-size:1.05rem;line-height:1.7;">
+      Our SEO team turns audit results into a clear action plan that drives real organic growth.
+    </p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+      <a href="contact.html" class="btn btn-primary">
+        Book a Free Consult
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <a href="services.html#seo" class="btn btn-ghost">Our SEO Services</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-logo">INSIDE<span style="font-weight:300"> LEADS</span></div>
+        <p class="footer-brand-desc">A full-service digital marketing &amp; AI consulting agency based in Raleigh, NC, dedicated to helping businesses grow and succeed online.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services.html#seo">SEO Strategy</a></li>
+          <li><a href="services.html#ppc">PPC Advertising</a></li>
+          <li><a href="services.html#social">Social Media</a></li>
+          <li><a href="services.html#local-seo">Local SEO</a></li>
+          <li><a href="services.html#web">Web Development</a></li>
+          <li><a href="services.html#ai-consulting">AI Consulting <span class="footer-new">NEW</span></a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="team.html">Our Team</a></li>
+          <li><a href="blog.html">Insights</a></li>
+          <li><a href="seo-audit.html">Free SEO Audit</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:john@getinsideleads.com">john@getinsideleads.com</a></li>
+          <li><a href="tel:+19195550100">(919) 555-0100</a></li>
+          <li><a href="#">Raleigh, NC</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">&copy; 2026 Inside Leads. All rights reserved.</span>
+      <div class="footer-social">
+        <a href="#" aria-label="LinkedIn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+        <a href="#" aria-label="Instagram">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="#" aria-label="Facebook">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const SUPABASE_URL = 'https://ttmetmodqfcgwflicpxo.supabase.co';
+  const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR0bWV0bW9kcWZjZ3dmbGljcHhvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAzNTc4NTUsImV4cCI6MjA5NTkzMzg1NX0.XU7wvJCnZIuxIKgPkpWt34c59k0y5t2hlcYB8zacWTI';
+</script>
+<script src="js/main.js"></script>
+<script src="js/seo-audit.js"></script>
+</body>
+</html>
