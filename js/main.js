@@ -208,47 +208,6 @@ document.addEventListener('DOMContentLoaded', () => {
     return valid;
   }
 
-  /* ---- Contact Form Submit ---- */
-  const contactForm = document.querySelector('#contact-form');
-  if (contactForm) {
-    contactForm.addEventListener('submit', async e => {
-      e.preventDefault();
-      const btn = contactForm.querySelector('[type="submit"]');
-      const msg = contactForm.querySelector('.form-message');
-      btn.textContent = 'Sending…';
-      btn.disabled = true;
-
-      try {
-        const formData = {
-          service: contactForm.querySelector('#service').value,
-          budget: contactForm.querySelector('#budget').value,
-          name: contactForm.querySelector('#name').value,
-          company: contactForm.querySelector('#company').value,
-          email: contactForm.querySelector('#email').value,
-          phone: contactForm.querySelector('#phone').value,
-          website: contactForm.querySelector('#website').value,
-          description: contactForm.querySelector('#description').value,
-          notes: contactForm.querySelector('#notes').value,
-          source: 'contact_page'
-        };
-
-        await new Promise(resolve => setTimeout(resolve, 800));
-
-        msg.className = 'form-message success';
-        msg.textContent = 'Thank you! Our team will reach out shortly to schedule your consult.';
-        contactForm.reset();
-        if (formPanels.length) goToStep(0);
-      } catch (error) {
-        console.error('Form submission error:', error);
-        msg.className = 'form-message error';
-        msg.textContent = 'Sorry, something went wrong. Please try again or email us directly at john@getinsideleads.com.';
-      } finally {
-        btn.textContent = 'BOOK CONSULT';
-        btn.disabled = false;
-      }
-    });
-  }
-
   /* ---- Reading Progress Bar ---- */
   const progressBar = document.getElementById('reading-progress');
   if (progressBar) {
