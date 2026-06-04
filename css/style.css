@@ -1158,6 +1158,7 @@ section { padding:8rem 0; }
 .article-cta-inline h3 { font-size:1.05rem; font-weight:700; text-transform:uppercase; letter-spacing:.04em; margin-bottom:.5rem; }
 .article-cta-inline p { font-size:.88rem; color:var(--muted); margin:0; }
 .article-cta-inline .btn { flex-shrink:0; white-space:nowrap; }
+.article-cta-inline .btn-primary { color:#000 !important; }
 
 /* Sidebar */
 .article-sidebar { position:sticky; top:calc(var(--nav-h) + 2rem); display:flex; flex-direction:column; gap:2rem; }
