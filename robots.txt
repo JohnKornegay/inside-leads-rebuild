@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://getinsideleads.com/sitemap.xml
+Sitemap: https://www.getinsideleads.com/sitemap.xml
