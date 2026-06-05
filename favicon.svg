@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Dark rounded background -->
+  <rect width="64" height="64" rx="12" fill="#0d0d0d"/>
+  <!-- Accent letter "I" — top bar -->
+  <rect x="10" y="10" width="44" height="8" rx="2" fill="#E8FF47"/>
+  <!-- Accent letter "I" — stem -->
+  <rect x="26" y="18" width="12" height="28" fill="#E8FF47"/>
+  <!-- Accent letter "I" — bottom bar -->
+  <rect x="10" y="46" width="44" height="8" rx="2" fill="#E8FF47"/>
+</svg>
