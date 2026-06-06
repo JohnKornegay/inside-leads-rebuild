@@ -1,6 +1,11 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "rewrites": [
+    { "source": "/blog", "destination": "/blog.html" },
+    { "source": "/locations/raleigh", "destination": "/locations/raleigh/index.html" },
+    { "source": "/locations/detroit", "destination": "/locations/detroit/index.html" }
+  ],
   "redirects": [
     { "source": "/raleigh", "destination": "/locations/raleigh", "permanent": true },
     { "source": "/detroit", "destination": "/locations/detroit", "permanent": true },
