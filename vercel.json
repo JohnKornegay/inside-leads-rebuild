@@ -2,34 +2,135 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [
-    { "source": "/blog", "destination": "/blog.html" },
-    { "source": "/locations/raleigh", "destination": "/locations/raleigh/index.html" },
-    { "source": "/locations/detroit", "destination": "/locations/detroit/index.html" }
+    {
+      "source": "/locations/raleigh",
+      "destination": "/locations/raleigh/index.html"
+    },
+    {
+      "source": "/locations/detroit",
+      "destination": "/locations/detroit/index.html"
+    }
   ],
   "redirects": [
-    { "source": "/raleigh", "destination": "/locations/raleigh", "permanent": true },
-    { "source": "/detroit", "destination": "/locations/detroit", "permanent": true },
-    { "source": "/raleigh.html", "destination": "/locations/raleigh", "permanent": true },
-    { "source": "/detroit.html", "destination": "/locations/detroit", "permanent": true },
-    { "source": "/article", "destination": "/blog/how-ai-is-transforming-seo", "permanent": true },
-    { "source": "/article.html", "destination": "/blog/how-ai-is-transforming-seo", "permanent": true },
-    { "source": "/blog-local-seo-raleigh", "destination": "/blog/local-seo-raleigh", "permanent": true },
-    { "source": "/blog-local-seo-raleigh.html", "destination": "/blog/local-seo-raleigh", "permanent": true },
-    { "source": "/blog-gbp-checklist", "destination": "/blog/gbp-checklist", "permanent": true },
-    { "source": "/blog-gbp-checklist.html", "destination": "/blog/gbp-checklist", "permanent": true },
-    { "source": "/blog-google-ads-not-converting", "destination": "/blog/google-ads-not-converting", "permanent": true },
-    { "source": "/blog-google-ads-not-converting.html", "destination": "/blog/google-ads-not-converting", "permanent": true },
-    { "source": "/blog-hyperlocal-marketing", "destination": "/blog/hyperlocal-marketing", "permanent": true },
-    { "source": "/blog-hyperlocal-marketing.html", "destination": "/blog/hyperlocal-marketing", "permanent": true },
-    { "source": "/blog-instagram-recommendations", "destination": "/blog/instagram-recommendations", "permanent": true },
-    { "source": "/blog-instagram-recommendations.html", "destination": "/blog/instagram-recommendations", "permanent": true },
-    { "source": "/blog-google-ads-bidding", "destination": "/blog/google-ads-bidding", "permanent": true },
-    { "source": "/blog-google-ads-bidding.html", "destination": "/blog/google-ads-bidding", "permanent": true },
-    { "source": "/blog-brand-awareness", "destination": "/blog/brand-awareness", "permanent": true },
-    { "source": "/blog-brand-awareness.html", "destination": "/blog/brand-awareness", "permanent": true },
-    { "source": "/blog-digital-marketing-myths", "destination": "/blog/digital-marketing-myths", "permanent": true },
-    { "source": "/blog-digital-marketing-myths.html", "destination": "/blog/digital-marketing-myths", "permanent": true },
-    { "source": "/seo-audit", "destination": "/tools", "permanent": true },
-    { "source": "/seo-audit.html", "destination": "/tools", "permanent": true }
+    {
+      "source": "/raleigh",
+      "destination": "/locations/raleigh",
+      "permanent": true
+    },
+    {
+      "source": "/detroit",
+      "destination": "/locations/detroit",
+      "permanent": true
+    },
+    {
+      "source": "/raleigh.html",
+      "destination": "/locations/raleigh",
+      "permanent": true
+    },
+    {
+      "source": "/detroit.html",
+      "destination": "/locations/detroit",
+      "permanent": true
+    },
+    {
+      "source": "/article",
+      "destination": "/blog/how-ai-is-transforming-seo",
+      "permanent": true
+    },
+    {
+      "source": "/article.html",
+      "destination": "/blog/how-ai-is-transforming-seo",
+      "permanent": true
+    },
+    {
+      "source": "/blog-local-seo-raleigh",
+      "destination": "/blog/local-seo-raleigh",
+      "permanent": true
+    },
+    {
+      "source": "/blog-local-seo-raleigh.html",
+      "destination": "/blog/local-seo-raleigh",
+      "permanent": true
+    },
+    {
+      "source": "/blog-gbp-checklist",
+      "destination": "/blog/gbp-checklist",
+      "permanent": true
+    },
+    {
+      "source": "/blog-gbp-checklist.html",
+      "destination": "/blog/gbp-checklist",
+      "permanent": true
+    },
+    {
+      "source": "/blog-google-ads-not-converting",
+      "destination": "/blog/google-ads-not-converting",
+      "permanent": true
+    },
+    {
+      "source": "/blog-google-ads-not-converting.html",
+      "destination": "/blog/google-ads-not-converting",
+      "permanent": true
+    },
+    {
+      "source": "/blog-hyperlocal-marketing",
+      "destination": "/blog/hyperlocal-marketing",
+      "permanent": true
+    },
+    {
+      "source": "/blog-hyperlocal-marketing.html",
+      "destination": "/blog/hyperlocal-marketing",
+      "permanent": true
+    },
+    {
+      "source": "/blog-instagram-recommendations",
+      "destination": "/blog/instagram-recommendations",
+      "permanent": true
+    },
+    {
+      "source": "/blog-instagram-recommendations.html",
+      "destination": "/blog/instagram-recommendations",
+      "permanent": true
+    },
+    {
+      "source": "/blog-google-ads-bidding",
+      "destination": "/blog/google-ads-bidding",
+      "permanent": true
+    },
+    {
+      "source": "/blog-google-ads-bidding.html",
+      "destination": "/blog/google-ads-bidding",
+      "permanent": true
+    },
+    {
+      "source": "/blog-brand-awareness",
+      "destination": "/blog/brand-awareness",
+      "permanent": true
+    },
+    {
+      "source": "/blog-brand-awareness.html",
+      "destination": "/blog/brand-awareness",
+      "permanent": true
+    },
+    {
+      "source": "/blog-digital-marketing-myths",
+      "destination": "/blog/digital-marketing-myths",
+      "permanent": true
+    },
+    {
+      "source": "/blog-digital-marketing-myths.html",
+      "destination": "/blog/digital-marketing-myths",
+      "permanent": true
+    },
+    {
+      "source": "/seo-audit",
+      "destination": "/tools",
+      "permanent": true
+    },
+    {
+      "source": "/seo-audit.html",
+      "destination": "/tools",
+      "permanent": true
+    }
   ]
 }
