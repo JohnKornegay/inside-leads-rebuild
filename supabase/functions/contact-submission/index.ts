@@ -168,8 +168,8 @@ Submitted at: ${new Date().toLocaleString("en-US", { timeZone: "America/New_York
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          from: "Inside Leads Contact Form <noreply@insideleads.com>",
-          to: ["hello@insideleads.com"],
+          from: "Inside Leads Contact Form <noreply@getinsideleads.com>",
+          to: ["john@getinsideleads.com"],
           subject: `New Contact Form: ${formData.service} - ${formData.name}`,
           text: emailBody,
         }),
