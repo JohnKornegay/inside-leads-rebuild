@@ -57,9 +57,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  /* ---- Scroll Reveal (IntersectionObserver) ---- */
+  /* ---- Scroll Reveal (IntersectionObserver) ----
+     Elements are visible by default (see css/style.css). Only arm the
+     hide-then-fade-in animation when IntersectionObserver is supported
+     and the user hasn't asked for reduced motion, so content never
+     disappears for crawlers, scrapers, or users if this script fails. */
   const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .step');
-  if (revealEls.length) {
+  const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (revealEls.length && 'IntersectionObserver' in window && !prefersReducedMotion) {
+    revealEls.forEach(el => el.classList.add('armed'));
     const io = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (e.isIntersecting) {
@@ -71,9 +77,12 @@ document.addEventListener('DOMContentLoaded', () => {
     revealEls.forEach(el => io.observe(el));
   }
 
-  /* ---- Animated Counters ---- */
+  /* ---- Animated Counters ----
+     HTML already renders the real final value by default (see index.html),
+     so counters that never trigger (JS disabled, reduced motion, IO
+     unsupported) still show correct numbers instead of "0+". */
   const counters = document.querySelectorAll('[data-counter]');
-  if (counters.length) {
+  if (counters.length && 'IntersectionObserver' in window && !prefersReducedMotion) {
     const counterIO = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (e.isIntersecting) {

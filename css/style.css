@@ -680,17 +680,28 @@ section { padding:8rem 0; }
 
 /* ============================================
    SCROLL ANIMATIONS
-   ============================================ */
-.reveal {
+   ============================================
+   Visible by default (opacity:1) so content is never hidden from
+   crawlers, social-preview scrapers, or users if JS fails to run.
+   main.js opts elements into the hidden "armed" state only after
+   confirming IntersectionObserver support and that the user hasn't
+   requested reduced motion — see js/main.js. */
+.reveal, .reveal-left, .reveal-right, .reveal-scale {
+  opacity:1; transform:none;
+}
+.reveal.armed {
   opacity:0; transform:translateY(28px);
   transition:opacity .7s var(--ease), transform .7s var(--ease);
 }
-.reveal.visible { opacity:1; transform:translateY(0); }
-.reveal-left  { opacity:0; transform:translateX(-28px); transition:opacity .7s var(--ease),transform .7s var(--ease); }
-.reveal-right { opacity:0; transform:translateX(28px);  transition:opacity .7s var(--ease),transform .7s var(--ease); }
-.reveal-left.visible, .reveal-right.visible { opacity:1; transform:translateX(0); }
-.reveal-scale { opacity:0; transform:scale(.95); transition:opacity .7s var(--ease),transform .7s var(--ease); }
-.reveal-scale.visible { opacity:1; transform:scale(1); }
+.reveal-left.armed  { opacity:0; transform:translateX(-28px); transition:opacity .7s var(--ease),transform .7s var(--ease); }
+.reveal-right.armed { opacity:0; transform:translateX(28px);  transition:opacity .7s var(--ease),transform .7s var(--ease); }
+.reveal-scale.armed { opacity:0; transform:scale(.95); transition:opacity .7s var(--ease),transform .7s var(--ease); }
+.reveal.armed.visible,
+.reveal-left.armed.visible,
+.reveal-right.armed.visible,
+.reveal-scale.armed.visible {
+  opacity:1; transform:none;
+}
 
 /* Stagger delay helpers */
 .delay-1 { transition-delay:.1s; }
@@ -722,6 +733,8 @@ section { padding:8rem 0; }
   .footer-grid { grid-template-columns:1fr; }
   .hero-heading { letter-spacing:-.03em; }
   .blog-search-bar { flex-direction:column; }
+  /* Scroll hint overlaps the hero CTA buttons on short mobile viewports; hide it below tablet width. */
+  .hero-scroll { display:none; }
 }
 @media (max-width:480px) {
   .hero-actions { flex-direction:column; }
