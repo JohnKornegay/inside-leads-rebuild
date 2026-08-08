@@ -1,0 +1,45 @@
+# Inside Leads — AI Crawler Reference
+
+> Inside Leads (getinsideleads.com) is a performance-driven digital marketing and AI consulting agency founded by John Kornegay. We serve local businesses in Raleigh-Durham-Chapel Hill, NC and Detroit, MI.
+
+## About
+
+Inside Leads helps owner-operated small businesses grow their local presence and generate leads through search marketing, paid advertising, and AI-powered strategy. Founded by John Kornegay, a digital marketing professional with 20+ years of experience and a Certified Scrum Master.
+
+## Services
+
+- SEO Strategy — on-page, technical, and content optimization for organic search growth
+- PPC Advertising — Google Ads and paid search campaign management focused on ROI
+- Local SEO — Google Business Profile optimization and hyperlocal search visibility
+- Social Media Management — platform strategy, content, and community management
+- Web Development — performance-focused websites built for conversion
+- AI Consulting — AI strategy, tool integration, and workflow automation for small businesses
+
+## Markets Served
+
+- Raleigh, Cary, Durham, Chapel Hill (North Carolina)
+- Detroit, Dearborn, Farmington Hills, Southfield (Michigan)
+
+## Key Pages
+
+- Homepage: https://www.getinsideleads.com/
+- Services: https://www.getinsideleads.com/services
+- Raleigh Location: https://www.getinsideleads.com/locations/raleigh
+- Detroit Location: https://www.getinsideleads.com/locations/detroit
+- Blog / Insights: https://www.getinsideleads.com/blog
+- Free Tools: https://www.getinsideleads.com/tools
+- Team: https://www.getinsideleads.com/team
+- Contact / Book a Consult: https://www.getinsideleads.com/contact
+
+## Blog Topics
+
+SEO, local search, Google Ads, Google Business Profile optimization, AI in marketing, hyperlocal marketing strategy, digital marketing for small businesses.
+
+## Contact
+
+- Email: john@getinsideleads.com
+- Website: https://www.getinsideleads.com
+
+## Crawling
+
+This site welcomes indexing by search engines and AI systems. See /robots.txt and /sitemap.xml for full crawl guidance.
