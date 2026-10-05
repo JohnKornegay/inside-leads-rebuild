@@ -14,123 +14,188 @@
   "redirects": [
     {
       "source": "/raleigh",
-      "destination": "/locations/raleigh",
+      "destination": "https://www.getinsideleads.com/locations/raleigh",
       "permanent": true
     },
     {
       "source": "/detroit",
-      "destination": "/locations/detroit",
+      "destination": "https://www.getinsideleads.com/locations/detroit",
       "permanent": true
     },
     {
       "source": "/raleigh.html",
-      "destination": "/locations/raleigh",
+      "destination": "https://www.getinsideleads.com/locations/raleigh",
       "permanent": true
     },
     {
       "source": "/detroit.html",
-      "destination": "/locations/detroit",
+      "destination": "https://www.getinsideleads.com/locations/detroit",
       "permanent": true
     },
     {
       "source": "/article",
-      "destination": "/blog/how-ai-is-transforming-seo",
+      "destination": "https://www.getinsideleads.com/blog/how-ai-is-transforming-seo",
       "permanent": true
     },
     {
       "source": "/article.html",
-      "destination": "/blog/how-ai-is-transforming-seo",
+      "destination": "https://www.getinsideleads.com/blog/how-ai-is-transforming-seo",
       "permanent": true
     },
     {
       "source": "/blog-local-seo-raleigh",
-      "destination": "/blog/local-seo-raleigh",
+      "destination": "https://www.getinsideleads.com/blog/local-seo-raleigh",
       "permanent": true
     },
     {
       "source": "/blog-local-seo-raleigh.html",
-      "destination": "/blog/local-seo-raleigh",
+      "destination": "https://www.getinsideleads.com/blog/local-seo-raleigh",
       "permanent": true
     },
     {
       "source": "/blog-gbp-checklist",
-      "destination": "/blog/gbp-checklist",
+      "destination": "https://www.getinsideleads.com/blog/gbp-checklist",
       "permanent": true
     },
     {
       "source": "/blog-gbp-checklist.html",
-      "destination": "/blog/gbp-checklist",
+      "destination": "https://www.getinsideleads.com/blog/gbp-checklist",
       "permanent": true
     },
     {
       "source": "/blog-google-ads-not-converting",
-      "destination": "/blog/google-ads-not-converting",
+      "destination": "https://www.getinsideleads.com/blog/google-ads-not-converting",
       "permanent": true
     },
     {
       "source": "/blog-google-ads-not-converting.html",
-      "destination": "/blog/google-ads-not-converting",
+      "destination": "https://www.getinsideleads.com/blog/google-ads-not-converting",
       "permanent": true
     },
     {
       "source": "/blog-hyperlocal-marketing",
-      "destination": "/blog/hyperlocal-marketing",
+      "destination": "https://www.getinsideleads.com/blog/hyperlocal-marketing",
       "permanent": true
     },
     {
       "source": "/blog-hyperlocal-marketing.html",
-      "destination": "/blog/hyperlocal-marketing",
+      "destination": "https://www.getinsideleads.com/blog/hyperlocal-marketing",
       "permanent": true
     },
     {
       "source": "/blog-instagram-recommendations",
-      "destination": "/blog/instagram-recommendations",
+      "destination": "https://www.getinsideleads.com/blog/instagram-recommendations",
       "permanent": true
     },
     {
       "source": "/blog-instagram-recommendations.html",
-      "destination": "/blog/instagram-recommendations",
+      "destination": "https://www.getinsideleads.com/blog/instagram-recommendations",
       "permanent": true
     },
     {
       "source": "/blog-google-ads-bidding",
-      "destination": "/blog/google-ads-bidding",
+      "destination": "https://www.getinsideleads.com/blog/google-ads-bidding",
       "permanent": true
     },
     {
       "source": "/blog-google-ads-bidding.html",
-      "destination": "/blog/google-ads-bidding",
+      "destination": "https://www.getinsideleads.com/blog/google-ads-bidding",
       "permanent": true
     },
     {
       "source": "/blog-brand-awareness",
-      "destination": "/blog/brand-awareness",
+      "destination": "https://www.getinsideleads.com/blog/brand-awareness",
       "permanent": true
     },
     {
       "source": "/blog-brand-awareness.html",
-      "destination": "/blog/brand-awareness",
+      "destination": "https://www.getinsideleads.com/blog/brand-awareness",
       "permanent": true
     },
     {
       "source": "/blog-digital-marketing-myths",
-      "destination": "/blog/digital-marketing-myths",
+      "destination": "https://www.getinsideleads.com/blog/digital-marketing-myths",
       "permanent": true
     },
     {
       "source": "/blog-digital-marketing-myths.html",
-      "destination": "/blog/digital-marketing-myths",
+      "destination": "https://www.getinsideleads.com/blog/digital-marketing-myths",
       "permanent": true
     },
     {
       "source": "/seo-audit",
-      "destination": "/tools",
+      "destination": "https://www.getinsideleads.com/tools",
       "permanent": true
     },
     {
       "source": "/seo-audit.html",
-      "destination": "/tools",
+      "destination": "https://www.getinsideleads.com/tools",
       "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "getinsideleads.com"
+        }
+      ],
+      "destination": "https://www.getinsideleads.com/:path*",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()"
+        },
+        {
+          "key": "Content-Security-Policy-Report-Only",
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://images.pexels.com https://api.qrserver.com https://www.googletagmanager.com https://*.google-analytics.com https://*.g.doubleclick.net https://www.google.com; font-src 'self'; connect-src 'self' https://*.supabase.co https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://*.g.doubleclick.net https://www.google.com; base-uri 'self'; form-action 'self'; object-src 'none'"
+        }
+      ]
+    },
+    {
+      "source": "/fonts/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/images/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=2592000, stale-while-revalidate=86400"
+        }
+      ]
+    },
+    {
+      "source": "/(css|js)/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, stale-while-revalidate=86400"
+        }
+      ]
     }
   ]
 }

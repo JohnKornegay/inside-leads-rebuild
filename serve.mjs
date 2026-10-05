@@ -29,6 +29,7 @@ const MIME = {
   '.txt':  'text/plain',
   '.woff': 'font/woff',
   '.woff2':'font/woff2',
+  '.webp': 'image/webp',
 };
 
 function resolve(urlPath) {
