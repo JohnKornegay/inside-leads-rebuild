@@ -34,15 +34,18 @@ document.addEventListener('DOMContentLoaded', () => {
   const toggle = document.querySelector('.nav-toggle');
   const mobileMenu = document.querySelector('.nav-mobile');
   if (toggle && mobileMenu) {
+    toggle.setAttribute('aria-expanded', 'false');
     toggle.addEventListener('click', () => {
       const open = toggle.classList.toggle('open');
       mobileMenu.classList.toggle('open', open);
+      toggle.setAttribute('aria-expanded', String(open));
       document.body.style.overflow = open ? 'hidden' : '';
     });
     mobileMenu.querySelectorAll('a').forEach(a => {
       a.addEventListener('click', () => {
         toggle.classList.remove('open');
         mobileMenu.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
         document.body.style.overflow = '';
       });
     });
@@ -57,9 +60,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  /* ---- Scroll Reveal (IntersectionObserver) ---- */
+  /* ---- Scroll Reveal (IntersectionObserver) ----
+     Elements are visible by default in CSS; they are only "armed" (hidden until
+     scrolled into view) when the browser can reveal them again and the visitor
+     has not asked for reduced motion. */
   const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .step');
-  if (revealEls.length) {
+  const canAnimate = 'IntersectionObserver' in window &&
+    !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (revealEls.length && !canAnimate) {
+    revealEls.forEach(el => el.classList.add('visible'));
+  } else if (revealEls.length) {
+    // Leave anything already on screen alone so it doesn't flash hidden after first paint
+    revealEls.forEach(el => {
+      if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('visible');
+      else el.classList.add('armed');
+    });
     const io = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (e.isIntersecting) {

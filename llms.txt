@@ -22,14 +22,35 @@ Inside Leads helps owner-operated small businesses grow their local presence and
 
 ## Key Pages
 
-- Homepage: https://www.getinsideleads.com/
-- Services: https://www.getinsideleads.com/services
-- Raleigh Location: https://www.getinsideleads.com/locations/raleigh
-- Detroit Location: https://www.getinsideleads.com/locations/detroit
-- Blog / Insights: https://www.getinsideleads.com/blog
-- Free Tools: https://www.getinsideleads.com/tools
-- Team: https://www.getinsideleads.com/team
-- Contact / Book a Consult: https://www.getinsideleads.com/contact
+- [Homepage](https://www.getinsideleads.com/): Overview of Inside Leads services, process and example engagements
+- [Services](https://www.getinsideleads.com/services): All services: SEO, PPC, local SEO, social media, web development, AI consulting
+- [Local SEO Services](https://www.getinsideleads.com/services/local-seo): Google Business Profile, citations, reviews and local search for Raleigh and Detroit businesses
+- [Google Ads Management](https://www.getinsideleads.com/services/google-ads-management): Conversion tracking, campaign structure and bidding for small-business Google Ads accounts
+- [Raleigh, NC](https://www.getinsideleads.com/locations/raleigh): Digital marketing for Raleigh, Cary, Durham and Chapel Hill
+- [Detroit, MI](https://www.getinsideleads.com/locations/detroit): Digital marketing for Detroit, Dearborn, Southfield and Farmington Hills
+- [Meet the Founder](https://www.getinsideleads.com/team): John Kornegay, founder, with 20+ years in digital marketing
+- [Contact / Book a Consult](https://www.getinsideleads.com/contact): Free consultation request
+- [Free Tools](https://www.getinsideleads.com/tools): Free SERP simulator, word counter and Google review link generator
+
+## Example Engagements
+
+Illustrative scenarios with modeled results that show how an engagement is structured. They are not reports on named clients.
+
+- [Example Engagements hub](https://www.getinsideleads.com/case-studies)
+- [HVAC local SEO example](https://www.getinsideleads.com/case-studies/raleigh-hvac-seo): Six-month local SEO plan for a Raleigh HVAC contractor
+- [Real estate PPC + SEO example](https://www.getinsideleads.com/case-studies/real-estate-ppc-seo): Combined Google Ads and SEO for a two-market real estate team
+- [Med spa PPC example](https://www.getinsideleads.com/case-studies/med-spa-ppc-roas): Value-based tracking and compliant creative for a med spa
+
+## Guides
+
+- [How to Get Cited by ChatGPT and Perplexity in 2026](https://www.getinsideleads.com/blog/ai-citations-chatgpt-perplexity)
+- [How AI Is Transforming SEO in 2026](https://www.getinsideleads.com/blog/how-ai-is-transforming-seo)
+- [How to Automate Marketing Workflows With AI](https://www.getinsideleads.com/blog/ai-automate-marketing-workflows)
+- [Local SEO Raleigh NC: The 2026 Guide](https://www.getinsideleads.com/blog/local-seo-raleigh)
+- [Google Business Profile Optimization Checklist 2026](https://www.getinsideleads.com/blog/gbp-checklist)
+- [Why Your Google Ads Aren't Converting](https://www.getinsideleads.com/blog/google-ads-not-converting)
+- [Google Ads Bidding Strategies Explained](https://www.getinsideleads.com/blog/google-ads-bidding)
+- [All articles](https://www.getinsideleads.com/blog)
 
 ## Blog Topics
 
@@ -38,6 +59,7 @@ SEO, local search, Google Ads, Google Business Profile optimization, AI in marke
 ## Contact
 
 - Email: john@getinsideleads.com
+- Phone: (313) 782-5835
 - Website: https://www.getinsideleads.com
 
 ## Crawling

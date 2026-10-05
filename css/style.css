@@ -3,6 +3,18 @@
    Dark Minimal Interactive Design
    ============================================ */
 
+/* ---- Fonts (self-hosted Space Grotesk variable, 300–700) ---- */
+@font-face {
+  font-family:'Space Grotesk'; font-style:normal; font-weight:300 700; font-display:swap;
+  src:url('/fonts/space-grotesk-latin-ext.woff2') format('woff2');
+  unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family:'Space Grotesk'; font-style:normal; font-weight:300 700; font-display:swap;
+  src:url('/fonts/space-grotesk-latin.woff2') format('woff2');
+  unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 /* ---- CSS Variables ---- */
 :root {
   --bg:        #0d0d0d;
@@ -95,7 +107,8 @@ ul { list-style:none; }
 
 /* Hamburger */
 .nav-toggle {
-  display:none; flex-direction:column; gap:5px; padding:.4rem;
+  display:none; flex-direction:column; justify-content:center; align-items:center;
+  gap:5px; padding:.4rem; min-width:44px; min-height:44px;
 }
 .nav-toggle span {
   display:block; width:24px; height:2px; background:var(--text);
@@ -158,7 +171,8 @@ ul { list-style:none; }
   content:''; display:block; width:32px; height:1px; background:var(--accent);
 }
 .hero-heading {
-  font-size:clamp(4rem, 12vw, 10rem);
+  /* Height-capped so the hero CTAs stay above the fold on 1440×900 desktops */
+  font-size:clamp(3.5rem, min(12vw, 14vh), 10rem);
   font-weight:900; line-height:.88;
   text-transform:uppercase; letter-spacing:-.04em;
   margin-bottom:2.5rem;
@@ -405,7 +419,7 @@ section { padding:8rem 0; }
 }
 .filter-btn {
   font-size:.7rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
-  padding:.55rem 1.2rem; border:1px solid var(--border); border-radius:20px;
+  padding:.55rem 1.2rem; min-height:44px; border:1px solid var(--border); border-radius:22px;
   color:var(--muted); transition:all .2s;
 }
 .filter-btn:hover, .filter-btn.active {
@@ -608,8 +622,8 @@ section { padding:8rem 0; }
 .footer-brand-logo { font-size:1.1rem; font-weight:800; letter-spacing:.08em; text-transform:uppercase; margin-bottom:1rem; }
 .footer-brand-desc { font-size:.88rem; color:var(--muted); line-height:1.7; max-width:280px; }
 .footer-col h4 { font-size:.68rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); margin-bottom:1.5rem; }
-.footer-col ul { display:flex; flex-direction:column; gap:.85rem; }
-.footer-col ul a { font-size:.88rem; color:var(--muted); transition:color .2s; }
+.footer-col ul { display:flex; flex-direction:column; gap:.25rem; }
+.footer-col ul a { display:inline-flex; align-items:center; min-height:44px; font-size:.88rem; color:var(--muted); transition:color .2s; }
 .footer-col ul a:hover { color:var(--text); }
 .footer-new { font-size:.6rem; letter-spacing:.12em; text-transform:uppercase; background:var(--accent); color:#0d0d0d; padding:.15rem .5rem; border-radius:20px; font-weight:800; }
 .footer-bottom {
@@ -619,7 +633,7 @@ section { padding:8rem 0; }
 .footer-copy { font-size:.8rem; color:var(--muted); }
 .footer-social { display:flex; gap:1rem; }
 .footer-social a {
-  width:36px; height:36px; border-radius:var(--radius); border:1px solid var(--border);
+  width:44px; height:44px; border-radius:var(--radius); border:1px solid var(--border);
   display:flex; align-items:center; justify-content:center; color:var(--muted);
   transition:border-color .2s, color .2s;
 }
@@ -681,16 +695,17 @@ section { padding:8rem 0; }
 /* ============================================
    SCROLL ANIMATIONS
    ============================================ */
-.reveal {
-  opacity:0; transform:translateY(28px);
-  transition:opacity .7s var(--ease), transform .7s var(--ease);
+.reveal, .reveal-left, .reveal-right, .reveal-scale { opacity:1; transform:none; }
+/* Content is visible by default so crawlers, link previews and no-JS visitors see it.
+   main.js adds .armed (hidden start state) only when IntersectionObserver is available
+   and the visitor has not asked for reduced motion. */
+.reveal.armed { opacity:0; transform:translateY(28px); transition:opacity .7s var(--ease), transform .7s var(--ease); }
+.reveal-left.armed  { opacity:0; transform:translateX(-28px); transition:opacity .7s var(--ease),transform .7s var(--ease); }
+.reveal-right.armed { opacity:0; transform:translateX(28px);  transition:opacity .7s var(--ease),transform .7s var(--ease); }
+.reveal-scale.armed { opacity:0; transform:scale(.95); transition:opacity .7s var(--ease),transform .7s var(--ease); }
+.reveal.armed.visible, .reveal-left.armed.visible, .reveal-right.armed.visible, .reveal-scale.armed.visible {
+  opacity:1; transform:none;
 }
-.reveal.visible { opacity:1; transform:translateY(0); }
-.reveal-left  { opacity:0; transform:translateX(-28px); transition:opacity .7s var(--ease),transform .7s var(--ease); }
-.reveal-right { opacity:0; transform:translateX(28px);  transition:opacity .7s var(--ease),transform .7s var(--ease); }
-.reveal-left.visible, .reveal-right.visible { opacity:1; transform:translateX(0); }
-.reveal-scale { opacity:0; transform:scale(.95); transition:opacity .7s var(--ease),transform .7s var(--ease); }
-.reveal-scale.visible { opacity:1; transform:scale(1); }
 
 /* Stagger delay helpers */
 .delay-1 { transition-delay:.1s; }
@@ -722,6 +737,8 @@ section { padding:8rem 0; }
   .footer-grid { grid-template-columns:1fr; }
   .hero-heading { letter-spacing:-.03em; }
   .blog-search-bar { flex-direction:column; }
+  /* The scroll hint overlaps the hero CTAs on phone-height viewports */
+  .hero-scroll { display:none; }
 }
 @media (max-width:480px) {
   .hero-actions { flex-direction:column; }
@@ -1112,7 +1129,7 @@ section { padding:8rem 0; }
 .article-share { display:flex; align-items:center; gap:.75rem; }
 .article-share-label { font-size:.62rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); }
 .article-share-btn {
-  width:34px; height:34px; border-radius:var(--radius); border:1px solid var(--border);
+  width:44px; height:44px; border-radius:var(--radius); border:1px solid var(--border);
   display:flex; align-items:center; justify-content:center; color:var(--muted);
   transition:border-color .2s,color .2s;
 }
@@ -1169,7 +1186,7 @@ section { padding:8rem 0; }
 .toc-title { font-size:.62rem; font-weight:800; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); margin-bottom:1.25rem; }
 .toc-list { display:flex; flex-direction:column; }
 .toc-link {
-  display:block; padding:.55rem 0;
+  display:block; padding:.7rem 0; min-height:44px;
   font-size:.84rem; color:var(--muted); line-height:1.4;
   border-bottom:1px solid rgba(255,255,255,.04);
   transition:color .2s,padding-left .2s;
@@ -1342,4 +1359,60 @@ section { padding:8rem 0; }
 @media (max-width:560px) {
   .cs-metrics { grid-template-columns:1fr; }
   .cs-snapshot { grid-template-columns:1fr; }
+}
+
+/* ============================================
+   SEO AUDIT 2026-10 ADDITIONS
+   ============================================ */
+/* Inline links in contact details and legal pages need a 44px tap area */
+.contact-info-item a { display:inline-flex; align-items:center; min-height:44px; }
+.footer-legal { display:flex; gap:1.25rem; }
+.footer-legal a { display:inline-flex; align-items:center; min-height:44px; font-size:.75rem; color:var(--muted); }
+.footer-legal a:hover { color:var(--text); }
+
+/* "Example engagement" labelling for illustrative case studies */
+.cs-example-flag {
+  display:inline-block; margin-left:.4rem;
+  font-size:.58rem; font-weight:800; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--muted); border:1px solid var(--border); border-radius:100px; padding:.3rem .6rem;
+}
+.cs-disclaimer { margin-top:1.75rem; text-align:center; font-size:.78rem; color:var(--muted); line-height:1.6; }
+.cs-banner {
+  margin:1.5rem 0 1.75rem; padding:1rem 1.25rem; max-width:820px;
+  background:var(--bg-alt); border:1px solid var(--border); border-left:3px solid var(--accent);
+  border-radius:0 var(--radius) var(--radius) 0; font-size:.82rem; color:rgba(255,255,255,.75); line-height:1.6;
+}
+
+/* Above-the-fold CTA in article and case-study heroes */
+.article-hero-cta { margin-top:1.75rem; }
+
+/* Related resources box at the end of posts */
+.related-box {
+  margin:3rem 0 0; padding:1.75rem; background:var(--bg-card);
+  border:1px solid var(--border); border-radius:8px;
+}
+.related-box h2 { font-size:1rem !important; margin:0 0 1rem !important; letter-spacing:.02em; }
+.related-box ul { list-style:none; padding:0 !important; margin:0 !important; display:flex; flex-direction:column; gap:.25rem; }
+.related-box li { margin:0 !important; }
+.related-box a { display:inline-flex; align-items:center; min-height:44px; color:var(--accent); }
+
+/* Legal pages */
+.legal-body { max-width:760px; }
+.legal-body h2 { font-size:1.25rem; margin:2.5rem 0 .75rem; }
+.legal-body p, .legal-body li { color:rgba(255,255,255,.75); line-height:1.75; margin-bottom:1rem; }
+.legal-body ul { padding-left:1.25rem; }
+.legal-body a { color:var(--accent); }
+
+@media (prefers-reduced-motion:reduce) {
+  .hero-scroll { animation:none; }
+}
+
+/* Grid children default to min-width:auto, so one long unbreakable string
+   (URL, stat) could widen the article column past the phone viewport */
+.article-layout > * { min-width:0; }
+.article-body { overflow-wrap:break-word; }
+.section-title { overflow-wrap:break-word; }
+.article-body > table { display:block; overflow-x:auto; }
+@media print {
+  .reveal.armed, .reveal-left.armed, .reveal-right.armed, .reveal-scale.armed { opacity:1; transform:none; }
 }
